@@ -1,0 +1,7 @@
+{% macro checking_ip(user_ip)  %}
+    {% if user_ip %}
+        <h1> Hola visitante, tu IP es {{user_ip}} </h1>
+    {% else %}
+        <a href="{{ url_for('index') }}"> Volver al index... </a>
+    {% endif %}
+{% endmacro %}

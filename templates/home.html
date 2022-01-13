@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+{% block title %}
+    {{ super() }}
+    Home
+{% endblock %}
+
+{% block content %}
+    {{ macro.checking_ip(user_ip) }}
+{% endblock %}
