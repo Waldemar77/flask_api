@@ -1,0 +1,55 @@
+/*-- Font Family for all html --*/
+html *{
+    font-family: sans-serif;
+}
+
+/*-- Title style --*/
+#main_title{
+    padding: 10px;
+    text-align: center;
+}
+
+/*-- Navigation bar style --*/
+#nav_bar{
+    padding: 10px;
+    width: 100%;
+    background-color: #fcfcfc;
+    border: 10px solid  #044e44;
+    padding: 15px;
+}
+
+/*-- Coink Logo style --*/
+img{
+    display: block;
+    max-width: 150px;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*-- All input with text type style --*/
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/*-- Input Submit style --*/
+input[type=submit] {
+  width: 100%;
+  background-color: #044e44;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #04e43a;
+}

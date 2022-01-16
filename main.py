@@ -1,25 +1,24 @@
-from flask import Flask, request, make_response, redirect, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    # usamos request para obtener la ruta de un visitante del sitio
-    user_ip = request.remote_addr
-
-    # usamos make_response y redirect para crear una respuesta y redireccionar
-    response = make_response(redirect('/home'))
-
-    # guardamos en cookies datos:
-    response.set_cookie('user_ip', user_ip)
-
-    return response
 
 @app.route('/home')
 def home():
-    user_ip = request.cookies.get('user_ip')
+    return render_template('home.html')
 
-    return render_template('home.html', user_ip=user_ip)
+
+@app.route('/home/add_user', methods=['POST'])
+def add_user():
+    try:
+        #   We capture the date from our form
+        user_name = request.form["full_name"]
+        user_email = request.form["email"]
+        user_city = request.form["ls_city"]
+
+
+    except Exception as e:
+        pass
 
 
 if __name__ == '__main__':

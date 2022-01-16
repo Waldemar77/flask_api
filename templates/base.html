@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        {% block title %}Flask Test |{% endblock %}
+        {% block title %}Coink Test |{% endblock %}
     </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+    <header>
+        {% include 'navbar.html' %}
+    </header>
     {% block content %}
     {% endblock %}
 </body>
