@@ -53,3 +53,11 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #04e43a;
 }
+
+#btn_mostrar {
+    padding: 10px;
+    text-align: center;
+    text-width: 24px;
+    color: white;
+    background-color: #044e44;
+}

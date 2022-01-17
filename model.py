@@ -1,32 +1,46 @@
 import sqlite3 as sql
+from flask_sqlalchemy import SQLAlchemy
 
 
 # Class to create CRUD in our api
 class Connection_db:
-    # Main path to create the DB
-    DB_PATH = '/home/Documents/database/coink.db'
+    # Creating the connection and the db according to the schema
+    def create_conn(self):
+        try:
+            conn = sql.connect('coink.db')
 
-    #
-    def crearte_conn(self):
-        conn = sql.connect(self.DB_PATH)
-        return conn
+            with open('database/schema.sql') as file:
+                conn.executescript(file.read())
+            return conn
+        except Exception as e:
+            msg_error = f'Error en la conexión: {e}'
+            return msg_error
 
+    # Creating the cursor of our connection
     def create_cursor(self):
-        conn = sql.connect(self.DB_PATH)
+        conn = self.create_conn()
         cursor = conn.cursor()
         return cursor
 
-    def create_DB(self):
-        # We build a connection to create our tables
-        conn = self.crearte_conn()
-        cursor = self.create_cursor()
-        cursor.execute("""CREATE TABLE users(
-            user_full_name text,
-            user_email text,
-            user_city text)
-        """)
-        conn.commit()
-        conn.close()
+    # Method to add users to the table "users"
+    def add_records(self, name, email, city):
+        try:
+            conn = self.create_conn()
+            cursor = self.create_cursor()
+            sql_query = f'INSERT INTO users (user_full_name, user_email, user_city) ' \
+                        f'VALUES ("{name}", "{email}", "{city}")'
+            cursor.execute(sql_query)
+            conn.commit()
+            conn.close()
+        except Exception as e:
+            msg_error = f'Error al intentar guardar el registro: {e}'
+            return msg_error
 
-    def add_records(self):
-        pass
+    # Method to show our data into the database:
+    def show_users(self):
+        conn = self.create_conn()
+        sql_query = 'SELECT * FROM users'
+        records = conn.execute(sql_query)
+        records = records.fetchall()
+        conn.close()
+        return records

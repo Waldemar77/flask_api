@@ -8,12 +8,12 @@
 {% block content %}
         <h1 id="main_title"> Formulario de Registro </h1>
 
-        <form action="/home/add_user" method="post">
+        <form action="/api/add_user" method="post">
             <label for="full_name">Nombre Completo: </label>
             <input id="full_name" name="full_name" type="text" placeholder="Ej. Pepito Pérez" required>
             <label for="email">Correo Electrónico: </label>
             <input id="email" type="text" name="email" placeholder="Ej. perezpetio@gmail.com" required>
-            <label for="city">Ciudad: </label>
+            <label for="ls_city">Ciudad: </label>
             <select id="ls_city" name="ls_city">
                <option selected value="0"> Elige una opción </option>
                    <optgroup label="Colombia">
@@ -38,11 +38,14 @@
                    <option value="17">Berlin</option>
                    <option value="18">Milan</option>
                    <option value="19">Roma</option>
-                   <option value="20">Brucelas</option>
+                   <option value="20">Bruselas</option>
                    <option value="21">Atenas</option>
                </optgroup>
             </select>
-            <input type="submit" value="Register">
+            <input type="submit" value="Guardar">
         </form>
-    </div>
+        <form action="/api/show_users" method="get">
+            <input type="submit" name="btn_show" value="Mostrar Registros">
+        </form>
+
 {% endblock %}
