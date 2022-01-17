@@ -16,17 +16,11 @@ class Connection_db:
             msg_error = f'Error en la conexión: {e}'
             return msg_error
 
-    # Creating the cursor of our connection
-    def create_cursor(self):
-        conn = self.create_conn()
-        cursor = conn.cursor()
-        return cursor
-
     # Method to add users to the table "users"
     def add_records(self, name, email, city):
         try:
             conn = self.create_conn()
-            cursor = self.create_cursor()
+            cursor = conn.cursor()
             sql_query = f'INSERT INTO users (user_full_name, user_email, user_city) ' \
                         f'VALUES ("{name}", "{email}", "{city}")'
             cursor.execute(sql_query)
@@ -39,8 +33,9 @@ class Connection_db:
     # Method to show our data into the database:
     def show_users(self):
         conn = self.create_conn()
+        cursor = conn.cursor()
         sql_query = 'SELECT * FROM users'
-        records = conn.execute(sql_query)
+        records = cursor.execute(sql_query)
         records = records.fetchall()
         conn.close()
         return records

@@ -48,15 +48,18 @@ def add_user():
 # Method to show the users
 @app.route('/api/show_users', methods=["GET"])
 def get_user():
+    global structure_html
     try:
         conn = Connection_db()
         users_list = conn.show_users()
 
+        # We create a list with just name of user
+        name_list = {
+            "name_list": users_list
+        }
+
         # We can show the outcome to html code:
-        for user in users_list:
-            print(f'Lista de usuarios: {users_list}')
-            structure_html = f'<h4> Listado de Registros Almacenados. {user}\n</h4>'
-        return jsonify(users_list), 200
+        return render_template('show_users.html', **name_list)
 
     except Exception as e:
         exception("{SERVER}: Error ->")
