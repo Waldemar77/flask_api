@@ -1,3 +1,4 @@
+import logging
 import os
 from flask import Flask, render_template, request, jsonify
 from model import *
@@ -24,6 +25,7 @@ def add_user():
         user_email = request.form["email"]
         user_city = request.form["ls_city"]
 
+        # We call the method to add users with params
         db_create.add_records(user_name, user_email, user_city)
 
         # Creating the dictionary to show the new register.
@@ -32,7 +34,8 @@ def add_user():
                       "user_city": user_city
                       }]
 
-        print(f'diccionario de datos: {dicc_user}')
+        # We create a file with the logging outcome
+        logging.basicConfig(level=logging.DEBUG, filename='add_users.log')
 
         # Using jsonify to convert a dictionary in a JSON file response
         return jsonify(dicc_user), 200

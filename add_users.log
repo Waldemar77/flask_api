@@ -1,0 +1,5 @@
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2022 11:26:51] "POST /api/add_user HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2022 11:27:37] "POST /api/add_user HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2022 11:27:43] "GET /api/show_users?btn_show=Mostrar+Registros HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2022 11:27:43] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2022 11:27:43] "[36mGET /static/images/coink.png HTTP/1.1[0m" 304 -
